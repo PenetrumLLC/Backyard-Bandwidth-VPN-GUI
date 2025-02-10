@@ -176,3 +176,35 @@ target_link_options(${TEST_PLAP_EXE} PRIVATE
         "/MANIFEST:EMBED"
         "/MANIFESTINPUT:${CMAKE_SOURCE_DIR}/plap/test-plap.manifest")
 
+# Install the main OpenVPN-GUI executable
+install(TARGETS openvpn-gui
+        RUNTIME DESTINATION bin
+)
+
+# Install configuration files
+install(FILES
+        ${CMAKE_SOURCE_DIR}/README.md
+        ${CMAKE_SOURCE_DIR}/LICENSE
+        DESTINATION share/docs
+)
+
+# Install configuration directory
+install(DIRECTORY ${CMAKE_SOURCE_DIR}/config DESTINATION etc/openvpn)
+
+
+# Include CPack for installer generation
+include(InstallRequiredSystemLibraries)
+
+# Define CPack settings
+set(CPACK_PACKAGE_NAME "OpenVPN-GUI")
+set(CPACK_PACKAGE_VERSION "1.0.0")
+set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Custom OpenVPN GUI Installer")
+set(CPACK_PACKAGE_VENDOR "Backyard Bandwidth")
+set(CPACK_PACKAGE_CONTACT "penetrumcorp@gmail.com")
+set(CPACK_PACKAGE_INSTALL_DIRECTORY "OpenVPN-GUI")
+
+# Define the type of installer (choose one)
+set(CPACK_GENERATOR "NSIS") # For Windows Installer (change to ZIP, WIX, INNOSETUP if needed)
+
+# Include CPack
+include(CPack)
