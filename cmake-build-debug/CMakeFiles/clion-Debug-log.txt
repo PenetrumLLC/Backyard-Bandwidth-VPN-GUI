@@ -1,1 +1,0 @@
-CMakeLists.txt not found in C:\Users\saman\CLionProjects\openvpn-gui Select CMakeLists.txt
