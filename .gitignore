@@ -10,6 +10,7 @@
 *.log
 *.tar.gz
 *.bak
+.idea/*
 
 .deps
 Makefile
